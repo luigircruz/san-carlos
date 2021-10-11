@@ -15,16 +15,24 @@ As a **user:writer**, I want to have the ability to...
 - see a lists of blog posts
 - see a featured list of blog posts
 - see a blog post
+- create a blog post
 - update a blog post
 - delete a blog post
+- attach a featured image when creating
+- attach a featured image when updating
+- detach a featured image when updating
 
 As a **user:admin**, I want to have the ability to...
 
 - see a lists of blog posts
 - see a featured list of blog posts
 - see a blog post
+- create a blog post
 - update a blog post
 - delete a blog post
+- attach a featured image when creating
+- attach a featured image when updating
+- detach a featured image when updating
 
 ## Role Management
 
@@ -53,3 +61,11 @@ As a **user:admin**, I want to have the ability to...
 As a **user:writer**, I want to have the ability to...
 
 - update my account information
+
+## User Log Management
+
+As a **user:admin**, I want to have the ability to...
+
+- see activities for all users
+- filter activities via models
+- search activities via a user
