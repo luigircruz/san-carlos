@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Blog\StoreBlogRequest;
+use App\Http\Requests\Blog\UpdateBlogRequest;
 use App\Http\Resources\BlogResource;
 use App\Models\Blog;
 use Illuminate\Http\Request;
@@ -28,10 +29,10 @@ class BlogsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreBlogRequest $request)
+    public function store(StoreBlogRequest $request, Blog $blog)
     {
         // create a blog
-        $blog = Blog::create($request->all());
+        $blog->create($request->validated());
 
         // redirect to the created new blog with success or fail messages
         return response(
@@ -58,10 +59,16 @@ class BlogsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateBlogRequest $request, Blog $blog)
     {
-        // update a blog
-        // redirect to the updated blog with success or fail messages
+        // create a blog
+        $blog->update($request->validated());
+
+        // redirect to the created new blog with success or fail messages
+        return response(
+            'Blog successfully updated!',
+            Response::HTTP_OK
+        );
     }
 
     /**
@@ -70,8 +77,13 @@ class BlogsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Blog $blog)
     {
-        // delete a blog
+        $blog->delete();
+
+        return response(
+            'Blog deleted!',
+            Response::HTTP_OK
+        );
     }
 }
