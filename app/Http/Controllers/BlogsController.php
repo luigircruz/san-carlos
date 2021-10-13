@@ -6,6 +6,7 @@ use App\Http\Requests\Blog\StoreBlogRequest;
 use App\Http\Resources\BlogResource;
 use App\Models\Blog;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class BlogsController extends Controller
 {
@@ -29,9 +30,14 @@ class BlogsController extends Controller
      */
     public function store(StoreBlogRequest $request)
     {
+        // create a blog
         $blog = Blog::create($request->all());
-        
-        return $blog;
+
+        // redirect to the created new blog with success or fail messages
+        return response(
+            'Blog successfully created!',
+            Response::HTTP_CREATED
+        );
     }
 
     /**
@@ -54,7 +60,8 @@ class BlogsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // update a blog
+        // redirect to the updated blog with success or fail messages
     }
 
     /**
@@ -65,6 +72,6 @@ class BlogsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // delete a blog
     }
 }
