@@ -25,9 +25,19 @@ class UpdateBlogRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => ['required', 'string', 'max:255', 'unique:blogs,title', Rule::unique('blogs')->ignore($this->blog)],
-            'slug' => ['string', 'unique:blogs,slug', Rule::unique('blogs')->ignore($this->blog)],
-            'content' => ['string', 'nullable'],
+            'title' => [
+                'string',
+                'max:255',
+                'nullable'
+            ],
+            'slug' => [
+                'string',
+                'nullable'
+            ],
+            'content' => [
+                'string',
+                'nullable'
+            ],
         ];
     }
 }
