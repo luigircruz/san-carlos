@@ -26,8 +26,7 @@ class BlogRequest extends FormRequest
     {
         return match($this->method()) {
             'POST' => $this->store(),
-            'PUT', 'PATCH' => $this->update(),
-            'DELETE' => $this->destroy()
+            'PUT', 'PATCH' => $this->update()
         };
     }
 
@@ -80,18 +79,6 @@ class BlogRequest extends FormRequest
                 'string',
                 'nullable'
             ],
-        ];
-    }
-
-    /**
-     * Get the validation rules that apply to the delete request.
-     *
-     * @return array
-     */
-    public function destroy()
-    {
-        return [
-            //
         ];
     }
 }
