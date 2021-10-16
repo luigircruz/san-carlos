@@ -19,7 +19,7 @@ it('only lists blogs that are not hidden and is approved', function () {
     Blog::factory()->hidden()->create();
     Blog::factory()->pending()->create();
 
-    $response = $this->get('/api/blogs')->dump();
+    $response = $this->get('/api/blogs');
 
     $response->assertOk()
         ->assertJsonCount(3, 'data');
