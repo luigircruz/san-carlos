@@ -16,7 +16,8 @@ class BlogsController extends Controller
      */
     public function index()
     {
-        $blogs = Blog::all();
+        $blogs = Blog::query()
+            ->paginate(20);
 
         return BlogResource::collection($blogs);
     }
