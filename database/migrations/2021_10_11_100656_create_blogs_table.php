@@ -22,6 +22,7 @@ class CreateBlogsTable extends Migration
             $table->tinyInteger('approval_status')->default(1);
             $table->boolean('hidden')->default(false);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
