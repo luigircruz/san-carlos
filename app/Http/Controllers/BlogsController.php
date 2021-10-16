@@ -17,6 +17,8 @@ class BlogsController extends Controller
     public function index()
     {
         $blogs = Blog::query()
+            ->where('approval_status', Blog::APPROVAL_APPROVED)
+            ->where('hidden', false)
             ->paginate(20);
 
         return BlogResource::collection($blogs);
