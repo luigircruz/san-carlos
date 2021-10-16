@@ -19,6 +19,7 @@ class BlogsController extends Controller
         $blogs = Blog::query()
             ->where('approval_status', Blog::APPROVAL_APPROVED)
             ->where('hidden', false)
+            ->with(['images', 'tags', 'user'])
             ->paginate(20);
 
         return BlogResource::collection($blogs);
