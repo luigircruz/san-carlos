@@ -51,6 +51,8 @@ class BlogsController extends Controller
      */
     public function show(Blog $blog)
     {
+        $blog->load(['images', 'tags', 'user']);
+        
         return BlogResource::make($blog);
     }
 
